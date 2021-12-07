@@ -8,6 +8,14 @@ public class OutputView {
 		printEmptyLine();
 	}
 
+	public static void printShortestRouteScreen() {
+		System.out.println("## 경로 기준");
+		System.out.println("1. 최단 거리");
+		System.out.println("2. 최소 시간");
+		System.out.println("B. 돌아가기");
+		printEmptyLine();
+	}
+
 	private static void printEmptyLine() {
 		System.out.println();
 	}
