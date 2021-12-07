@@ -1,5 +1,6 @@
 package subway.domain.function;
 
+import static subway.utils.Validate.*;
 import static subway.view.InputView.*;
 import static subway.view.OutputView.*;
 
@@ -15,12 +16,18 @@ public enum ShortestRoute {
 	FIND_SHORTEST_DISTANCE("1") {
 		@Override
 		void function(Scanner scanner) {
-			String startStation = inputStartStation(scanner);
-			String endStation = inputEndStation(scanner);
-			List<String> shortestRoutePathList = ShortestRouteDistance.findShortestRoutePath(startStation, endStation);
-			int totalDistance = SectionRepository.findShortestPathListDistance(shortestRoutePathList);
-			int totalTime = SectionRepository.findShortestPathListTime(shortestRoutePathList);
-			printShortestRouteByDistanceResult(shortestRoutePathList, totalDistance, totalTime);
+			try{
+				String startStation = inputStartStation(scanner);
+				String endStation = inputEndStation(scanner);
+				validateIsEqualsStartNameAndEndName(startStation, endStation);
+				List<String> shortestRoutePathList = ShortestRouteDistance.findShortestRoutePath(startStation, endStation);
+				int totalDistance = SectionRepository.findShortestPathListDistance(shortestRoutePathList);
+				int totalTime = SectionRepository.findShortestPathListTime(shortestRoutePathList);
+				printShortestRouteByDistanceResult(shortestRoutePathList, totalDistance, totalTime);
+			} catch (IllegalArgumentException illegalArgumentException) {
+				System.out.println(illegalArgumentException.getMessage());
+				function(scanner);
+			}
 		}
 	},
 	FIND_SHORTEST_TIME("2") {

@@ -7,7 +7,8 @@ import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
 public class ShortestRouteDistance {
-	public static WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+	public static WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(
+		DefaultWeightedEdge.class);
 	public static DijkstraShortestPath dijkstraShortestPath;
 
 	static {
@@ -26,10 +27,15 @@ public class ShortestRouteDistance {
 		graph.setEdgeWeight(graph.addEdge("강남역", "양재역"), 2);
 		graph.setEdgeWeight(graph.addEdge("양재역", "양재시민의숲역"), 10);
 		dijkstraShortestPath = new DijkstraShortestPath(graph);
-		}
+	}
 
-		public static List<String> findShortestRoutePath(String startStationName, String endStationName) {
-			List<String> shortestRoutePathList = dijkstraShortestPath.getPath(startStationName, endStationName).getVertexList();
+	public static List<String> findShortestRoutePath(String startStationName, String endStationName) {
+		try{
+			List<String> shortestRoutePathList = dijkstraShortestPath.getPath(startStationName, endStationName)
+				.getVertexList();
 			return shortestRoutePathList;
+		} catch (IllegalArgumentException illegalArgumentException) {
+			throw new IllegalArgumentException("[ERROR] 연결되지 않은 역입니다.");
 		}
+	}
 }
