@@ -10,6 +10,13 @@ public class InputView {
 		return inputCommand;
 	}
 
+	public static String inputLookUpRouteType(Scanner scanner) {
+		System.out.println("## 원하는 기능을 선택하세요.");
+		String lookupRouteType = scanner.nextLine();
+		printEmptyLine();
+		return lookupRouteType;
+	}
+
 	private static void printEmptyLine() {
 		System.out.println();
 	}
