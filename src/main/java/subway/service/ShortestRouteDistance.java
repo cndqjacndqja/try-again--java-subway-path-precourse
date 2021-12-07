@@ -26,10 +26,10 @@ public class ShortestRouteDistance {
 		graph.setEdgeWeight(graph.addEdge("강남역", "양재역"), 2);
 		graph.setEdgeWeight(graph.addEdge("양재역", "양재시민의숲역"), 10);
 		dijkstraShortestPath = new DijkstraShortestPath(graph);
-	}
+		}
 
-	public static List<String> findShortestRoutePath(String startStationName, String endStationName) {
-		List<String> shortestPath = dijkstraShortestPath.getPath(startStationName, endStationName).getVertexList();
-		return shortestPath;
-	}
+		public static List<String> findShortestRoutePath(String startStationName, String endStationName) {
+			List<String> shortestPath = dijkstraShortestPath.getPath(startStationName, endStationName).getVertexList();
+			return shortestPath;
+		}
 }
