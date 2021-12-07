@@ -3,11 +3,14 @@ package subway.domain.function;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import subway.controller.ShortestRouteController;
+
 public enum MainRoute {
 	LOOK_UP_ROUTE("1"){
 		@Override
 		void function(Scanner scanner) {
-
+			ShortestRouteController shortestRouteController = new ShortestRouteController();
+			shortestRouteController.run(scanner);
 		}
 	},
 	FINISH("Q"){

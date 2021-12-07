@@ -14,6 +14,7 @@ public class MainController {
 		try{
 			MainRoute mainRoute = MainRoute.findRoute(inputMainFunctionCommand(scanner));
 			mainRoute.apply(scanner);
+			run(scanner);
 		}catch (IllegalArgumentException illegalArgumentException) {
 			System.out.println(ERROR_MESSAGE + illegalArgumentException.getMessage());
 			run(scanner);

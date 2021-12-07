@@ -29,7 +29,7 @@ public class ShortestRouteDistance {
 		}
 
 		public static List<String> findShortestRoutePath(String startStationName, String endStationName) {
-			List<String> shortestPath = dijkstraShortestPath.getPath(startStationName, endStationName).getVertexList();
-			return shortestPath;
+			List<String> shortestRoutePathList = dijkstraShortestPath.getPath(startStationName, endStationName).getVertexList();
+			return shortestRoutePathList;
 		}
 }

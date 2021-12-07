@@ -1,6 +1,7 @@
 package subway.domain.function;
 
 import static subway.view.InputView.*;
+import static subway.view.OutputView.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Scanner;
 
 import subway.domain.SectionRepository;
 import subway.service.ShortestRouteDistance;
+import subway.service.ShortestRouteTime;
 
 public enum ShortestRoute {
 	FIND_SHORTEST_DISTANCE("1") {
@@ -15,15 +17,21 @@ public enum ShortestRoute {
 		void function(Scanner scanner) {
 			String startStation = inputStartStation(scanner);
 			String endStation = inputEndStation(scanner);
-			List<String> shortestRoutePath = ShortestRouteDistance.findShortestRoutePath(startStation, endStation);
-			int totalDistance = SectionRepository.findShortestPathListDistance(shortestRoutePath);
-			int totalTime = SectionRepository.findShortestPathListTime(shortestRoutePath);
+			List<String> shortestRoutePathList = ShortestRouteDistance.findShortestRoutePath(startStation, endStation);
+			int totalDistance = SectionRepository.findShortestPathListDistance(shortestRoutePathList);
+			int totalTime = SectionRepository.findShortestPathListTime(shortestRoutePathList);
+			printShortestRouteByDistanceResult(shortestRoutePathList, totalDistance, totalTime);
 		}
 	},
 	FIND_SHORTEST_TIME("2") {
 		@Override
 		void function(Scanner scanner) {
-
+			String startStation = inputStartStation(scanner);
+			String endStation = inputEndStation(scanner);
+			List<String> shortestRoutePathList = ShortestRouteTime.findShortestRoutePath(startStation, endStation);
+			int totalDistance = SectionRepository.findShortestPathListDistance(shortestRoutePathList);
+			int totalTime = SectionRepository.findShortestPathListTime(shortestRoutePathList);
+			printShortestRouteByDistanceResult(shortestRoutePathList, totalDistance, totalTime);
 		}
 	},
 	BACK("B") {
