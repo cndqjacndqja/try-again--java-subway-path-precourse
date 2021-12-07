@@ -5,9 +5,12 @@ import static subway.view.OutputView.*;
 
 import java.util.Scanner;
 
+import subway.domain.function.ShortestRoute;
+
 public class ShortestRouteController {
 	public void run(Scanner scanner) {
 		printShortestRouteScreen();
-		inputLookUpRouteType(scanner);
+		ShortestRoute shortestRoute = ShortestRoute.findRoute(inputLookUpRouteType(scanner));
+		shortestRoute.apply(scanner);
 	}
 }
