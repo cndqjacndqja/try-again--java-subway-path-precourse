@@ -17,6 +17,19 @@ public class InputView {
 		return lookupRouteType;
 	}
 
+	public static String inputStartStation(Scanner scanner) {
+		System.out.println("## 출발역을 입력하세요.");
+		String startStation = scanner.nextLine();
+		printEmptyLine();
+		return startStation;
+	}
+	public static String inputEndStation(Scanner scanner) {
+		System.out.println("## 도착역을 입력하세요.");
+		String endStation = scanner.nextLine();
+		printEmptyLine();
+		return endStation;
+	}
+
 	private static void printEmptyLine() {
 		System.out.println();
 	}

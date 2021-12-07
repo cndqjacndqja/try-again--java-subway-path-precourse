@@ -12,4 +12,16 @@ public class Section {
 		this.distance = distance;
 		this.time = time;
 	}
+
+	public boolean findSectionByPath(String startStation, String endStation) {
+		return this.startStation.getName().equals(startStation) && this.endStation.getName().equals(endStation);
+	}
+
+	public int getDistance() {
+		return distance;
+	}
+
+	public int getTime() {
+		return time;
+	}
 }
