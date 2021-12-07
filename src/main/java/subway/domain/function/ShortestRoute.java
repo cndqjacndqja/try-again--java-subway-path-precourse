@@ -19,7 +19,7 @@ public enum ShortestRoute {
 			try{
 				String startStation = inputStartStation(scanner);
 				String endStation = inputEndStation(scanner);
-				validateIsEqualsStartNameAndEndName(startStation, endStation);
+				validateStartStationAndEndStation(startStation, endStation);
 				List<String> shortestRoutePathList = ShortestRouteDistance.findShortestRoutePath(startStation, endStation);
 				int totalDistance = SectionRepository.findShortestPathListDistance(shortestRoutePathList);
 				int totalTime = SectionRepository.findShortestPathListTime(shortestRoutePathList);
